@@ -13,7 +13,6 @@ db.connect((err) => {
     }else {
         console.log("Connect")
     }
-    
 })
 
 export default db

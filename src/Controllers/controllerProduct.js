@@ -11,7 +11,7 @@ export const getProduct = async (__, res) => {
             })
         })
     } catch (err) {
-        return res.status(500).send(500)
+        return res.status(500).send(err)
     }
 }
 
@@ -28,7 +28,7 @@ export const getProductID = (req, res) => {
             })
         })
     } catch (err) {
-        return res.status(500).send(err)
+        return res.status(500).send({msg: 'ops'})
     }
 }
 
