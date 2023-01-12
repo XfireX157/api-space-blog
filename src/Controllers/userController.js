@@ -93,7 +93,7 @@ export const loginUser = (req, res) => {
                 res.status(404).json({ msg: "Usario não encontrado" })
             }
         })
-    }catch(err) {
+    } catch (err) {
         return res.status(500).send(err)
     }
 }

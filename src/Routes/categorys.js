@@ -1,6 +1,6 @@
 import express from 'express'
 const categorys = express.Router()
-import {categoryGet, categoryPost, categoryDelete, categoryPatch, categoryGetID} from '../Controllers/categorysControllers.js'
+import { categoryGet, categoryPost, categoryDelete, categoryPatch, categoryGetID } from '../Controllers/categorysControllers.js'
 import tokenLogin from '../middlewares/Login.js'
 
 categorys

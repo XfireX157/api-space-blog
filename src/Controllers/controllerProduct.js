@@ -28,7 +28,7 @@ export const getProductID = (req, res) => {
             })
         })
     } catch (err) {
-        return res.status(500).send({msg: 'ops'})
+        return res.status(500).send({ msg: 'ops' })
     }
 }
 
@@ -47,7 +47,7 @@ export const addProduct = async (req, res) => {
                 })
             })
         }
-    }catch(err) {
+    } catch (err) {
         return res.status(500).send(err)
     }
 }

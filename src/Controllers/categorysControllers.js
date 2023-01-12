@@ -1,6 +1,6 @@
 import db from '../Server/db.js'
 
-export const categoryGet =  (req, res) => {
+export const categoryGet = (req, res) => {
     try {
         db.query("SELECT * FROM categorys", (err, data) => {
             if (err) return res.status(401).json({
@@ -74,7 +74,7 @@ export const categoryPatch = async (req, res) => {
                 msg: "Update feito com sucesso"
             })
         })
-    }catch(err){
+    } catch (err) {
         return res.status(500).send(err)
     }
 }
