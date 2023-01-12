@@ -12,7 +12,5 @@ router
     .delete('/:id', tokenLogin, deleteProduct)
     .put('/:id', tokenLogin, upload.single('image'), updateProduct)
     .patch('/:id', tokenLogin, updateProductPatch)
-    
-
 
 export default router

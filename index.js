@@ -4,6 +4,10 @@ const app = express()
 import path from 'path'
 import { fileURLToPath } from 'url'
 import router from './src/Routes/index.js'
+import dotenv from 'dotenv'
+
+const port = process.env.PORT || 8080
+dotenv.config()
 
 app.use(express.json())
 app.use(cors())
@@ -16,6 +20,7 @@ app.use('/files', express.static(path.join(__dirname, 'public')))
 
 router(app)
 
-app.listen(8080, () => {
-    console.log('rondando na porta 8080')
+
+app.listen(port, () => {
+    console.log(`rondando na porta ${port}`)
 })
