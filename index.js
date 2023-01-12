@@ -3,7 +3,7 @@ import cors from 'cors'
 const app = express()
 import path from 'path'
 import { fileURLToPath } from 'url'
-import router from './Routes/index.js'
+import router from './src/Routes/index.js'
 
 app.use(express.json())
 app.use(cors())
