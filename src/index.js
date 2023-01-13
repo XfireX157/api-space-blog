@@ -1,12 +1,12 @@
 import express from 'express'
-import dotenv from 'dotenv'
+
 import cors from 'cors'
 const app = express()
 import path from 'path'
 import { fileURLToPath } from 'url'
-import router from './src/Routes/index.js'
+import router from './Routes/index.js'
 
-dotenv.config()
+
 const port = process.env.PORT || 8080
 
 app.use(express.json())

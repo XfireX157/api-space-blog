@@ -79,7 +79,7 @@ export const loginUser = (req, res) => {
                         const token = jwt.sign({
                             id: result.id,
                             email: result.email
-                        }, 'segredo', { expiresIn: '1h' })
+                        }, process.env.JWT, { expiresIn: '1h' })
                         res.status(200).json({
                             token: token,
                             msg: "Usario logado com sucesso"
