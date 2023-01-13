@@ -77,7 +77,10 @@ export const searchByName = (req, res) => {
 
         db.query("SELECT * FROM tbprodutos WHERE nome LIKE ?", ["%" + nome + "%"], (err, result) => {
             if (err) throw err
-            return res.status(200).json({ result})
+            return res.status(200).json({
+                result,
+                url: "https://api-space-blog-production.up.railway.app/images/"
+            })
         })
     } catch (err) {
         return res.status(500).send(err)
