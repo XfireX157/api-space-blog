@@ -1,6 +1,6 @@
 import db from '../Server/db.js'
 
-export const categoryGet = (req, res) => {
+export const categoryGet = (__, res) => {
     try {
         db.query("SELECT * FROM categorys", (err, data) => {
             if (err) return res.status(401).json({
@@ -35,7 +35,7 @@ export const categoryGetID = async (req, res) => {
 
 export const categoryPost = async (req, res) => {
     try {
-        const sql = "INSERT INTO categorys(`categoryName`) VALUES(?)"
+        const sql = "INSERT INTO categorys (`categoryName`) VALUES(?)"
 
         db.query(sql, [req.body.categoryName], (err, data) => {
             if (err) return res.status(400).json(err)

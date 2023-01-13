@@ -7,9 +7,7 @@ const tokenLogin = (req, res, next) => {
         req.usuario = decode
         next()
     } catch (err) {
-        return res.status(401).send({
-            msg: "Falha na autenticação"
-        })
+        return res.status(401).send({msg: err.message})
     }
 }
 
