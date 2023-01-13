@@ -7,7 +7,7 @@ export const getProduct = async (__, res) => {
             return res.status(200).json({
                 msg: "Sucesso ao encontrar todas as imagens",
                 cards: data,
-                url: "http://localhost:8080/images/"
+                url: "api-space-blog-production.up.railway/images/"
             })
         })
     } catch (err) {
@@ -24,7 +24,8 @@ export const getProductID = (req, res) => {
             if (err) return res.status(404).json(err)
             return res.status(200).json({
                 card: data,
-                msg: "Sucesso ao encontrar o produto especifico"
+                msg: "Sucesso ao encontrar o produto especifico",
+                url: "api-space-blog-production.up.railway/images/"
             })
         })
     } catch (err) {
