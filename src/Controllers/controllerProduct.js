@@ -7,7 +7,7 @@ export const getProduct = async (__, res) => {
             return res.status(200).json({
                 msg: "Sucesso ao encontrar todas as imagens",
                 cards: data,
-                url: "api-space-blog-production.up.railway/images/"
+                url: "https://api-space-blog-production.up.railway.app/images/"
             })
         })
     } catch (err) {
@@ -25,10 +25,11 @@ export const getProductID = (req, res) => {
             return res.status(200).json({
                 card: data,
                 msg: "Sucesso ao encontrar o produto especifico",
-                url: "api-space-blog-production.up.railway/images/"
+                url: "https://api-space-blog-production.up.railway.app/images/"
             })
         })
     } catch (err) {
+        
         return res.status(500).send({ msg: 'ops' })
     }
 }
