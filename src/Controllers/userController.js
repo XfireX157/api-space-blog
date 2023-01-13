@@ -3,12 +3,12 @@ import bcrypt from 'bcrypt'
 const saltRounds = 10
 import jwt from "jsonwebtoken";
 
-export const getUsers = (req, res) => {
+export const getUsers = (__, res) => {
     try {
         db.query("SELECT * FROM tb_users", (err, data) => {
             if (err) return res.status(400).json(err)
             return res.status(200).json({
-                msg: "Sucesso em pegar todos os dados do banco",
+                msg: "Sucesso em pegar todos os dados do bancos",
                 result: data
             })
         })
@@ -16,7 +16,6 @@ export const getUsers = (req, res) => {
         return res.status(500).send(err)
     }
 }
-
 export const getUserID = (req, res) => {
     try {
         const { id } = req.params

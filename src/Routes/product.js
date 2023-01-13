@@ -7,8 +7,8 @@ import tokenLogin from "../middlewares/Login.js";
 router
     .get('/getAll', getProduct)
     .get('/getId/:id', getProductID)
+    .post('/', tokenLogin, upload.single('image'), addProduct)
     .get('/search', searchByName)
-    .post('/Post', tokenLogin, upload.single('image'), addProduct)
     .delete('/:id', tokenLogin, deleteProduct)
     .patch('/:id', tokenLogin, upload.single('image'), updateProductPatch)
 

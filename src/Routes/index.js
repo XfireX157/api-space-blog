@@ -6,9 +6,9 @@ import categorys from './categorys.js'
 const routes = (app) => {
     app.use(
         express.json(),
+        user,
         product,
-        categorys,
-        user
+        categorys
     )
 }
 

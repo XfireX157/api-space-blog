@@ -7,11 +7,11 @@ export const getProduct = async (__, res) => {
             return res.status(200).json({
                 msg: "Sucesso ao encontrar todas as imagens",
                 cards: data,
-                url: "http://localhost:8080/files/upload/"
+                url: "http://localhost:8080/images/"
             })
         })
     } catch (err) {
-        return res.status(500).send(err)
+        return res.status(500).send(err, "sdasd")
     }
 }
 
