@@ -2,7 +2,7 @@ import mysql from 'mysql2'
 import dotenv from 'dotenv'
 dotenv.config()
 
-const db = mysql.createConnection("mysql://root:3ipQoc3DcX4KIEtpT195@containers-us-west-116.railway.app:5618/railway")
+const db = mysql.createConnection(process.env.DATABASE)
 
 db.connect((err) => {
     if(err) {

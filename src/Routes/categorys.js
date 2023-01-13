@@ -6,8 +6,8 @@ import tokenLogin from '../middlewares/Login.js'
 categorys
     .get('/categorysGet', categoryGet)
     .get('/categoryGetID/:id', categoryGetID)
-    .post('/categorysPost', categoryPost)
-    .delete('/categorysDelete/:id', categoryDelete)
-    .patch('/categoryPatch/:id', categoryPatch)
+    .post('/categorysPost', tokenLogin, categoryPost)
+    .delete('/categorysDelete/:id', tokenLogin, categoryDelete)
+    .patch('/categoryPatch/:id', tokenLogin, categoryPatch)
 
 export default categorys
