@@ -1,9 +1,9 @@
-import express from 'express'
-import product from './product.js'
-import user from './user.js'
-import categorys from './categorys.js'
+import express from 'express';
+import product from './product.js';
+import user from './user.js';
+import categorys from './categorys.js';
 
-const routes = (app) => {
+const Routes = (app) => {
     app.use(
         express.json(),
         user,
@@ -12,4 +12,4 @@ const routes = (app) => {
     )
 }
 
-export default routes
+export default Routes;

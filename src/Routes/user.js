@@ -1,6 +1,6 @@
-import express from 'express'
-const user = express.Router()
-import { registerUsers, getUsers, getUserID, loginUser } from '../Controllers/userController.js'
+import express from 'express';
+const user = express.Router();
+import { registerUsers, getUsers, getUserID, loginUser } from '../Controllers/userController.js';
 
 user
     .get('/user', getUsers)
@@ -8,4 +8,4 @@ user
     .post('/register', registerUsers)
     .post('/login', loginUser)
 
-export default user
+export default user;

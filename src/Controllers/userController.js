@@ -1,45 +1,44 @@
 import db from "../Server/db.js";
-import bcrypt from 'bcrypt'
-const saltRounds = 10
+import bcrypt from 'bcrypt';
+const saltRounds = 10;
 import jwt from "jsonwebtoken";
 
 export const getUsers = (__, res) => {
     try {
         db.query("SELECT * FROM tb_users", (err, data) => {
-            if (err) return res.status(400).json(err)
+            if (err) return res.status(400).json(err);
             return res.status(200).json({
                 msg: "Sucesso em pegar todos os dados do bancos",
                 result: data
-            })
-        })
+            });
+        });
     } catch (err) {
-        return res.status(500).send(err)
+        return res.status(500).send(err);
     }
 }
 export const getUserID = (req, res) => {
     try {
-        const { id } = req.params
+        const {id} = req.params;
         db.query("SELECT * FROM tb_users WHERE `id` = ?", [id], (err, data) => {
-            if (err) return res.status(400).json(err)
+            if (err) return res.status(400).json(err);
             return res.status(200).json({
                 msg: `Sucesso em pegar o id ${id}`,
                 result: data
-            })
-        })
+            });
+        });
     } catch (err) {
-        return res.status(500).send(err)
+        return res.status(500).send(err);
     }
 }
 
 export const registerUsers = (req, res) => {
     try {
-        const email = req.body.email
-        const password = req.body.password
+        const {email, password} = req.body;
 
         db.query("SELECT * FROM tb_users WHERE email = ? ", [email],
             (error, result) => {
                 if (error) {
-                    return res.send(error)
+                    return res.send(error);
                 }
                 if (result.length == 0) {
                     bcrypt.hash(password, saltRounds, (err, hash) => {
@@ -52,47 +51,45 @@ export const registerUsers = (req, res) => {
                                     msg: "Cadastro realizado com sucesso",
                                     email: email,
                                     password: password
-                                })
-                            })
+                                });
+                            });
                     })
                 } else {
-                    return res.send({ msg: "Usuario já cadastrado" })
+                    return res.send({msg: "Usuario já cadastrado"});
                 }
             })
     } catch (err) {
-        return res.status(500).send(err)
+        return res.status(500).send(err);
     }
 }
 
 export const loginUser = (req, res) => {
     try {
-        const email = req.body.email
-        const password = req.body.password
+        const {email, password} = req.body;
 
         db.query("SELECT * FROM tb_users WHERE email = ?", [email], (err, result) => {
-            if (err) return res.status(500).send({ error: err })
-
+            if (err) return res.status(500).send({ error: err });
             if (result.length > 0) {
                 bcrypt.compare(password, result[0].password, (error, result) => {
                     if (result) {
                         const token = jwt.sign({
                             id: result.id,
                             email: result.email
-                        }, 'segredo' , { expiresIn: '1h' })
+                        }, process.env.JWT, {expiresIn: '1h'});
                         res.status(200).json({
                             token: token,
                             msg: "Usario logado com sucesso"
                         })
                     } else {
-                        res.status(401).json({ msg: "A senha ou email estão incorretos", err: err })
+                        res.status(401).json({msg: "A senha ou email estão incorretos", err: err});
                     }
                 })
             }
             else {
-                res.status(404).json({ msg: "Usario não encontrado" })
+                res.status(404).json({msg: "Usario não encontrado"});
             }
         })
     } catch (err) {
-        return res.status(500).send(err)
+        return res.status(500).send(err);
     }
 }

@@ -1,7 +1,7 @@
-import express from 'express'
-const categorys = express.Router()
-import { categoryGet, categoryPost, categoryDelete, categoryPatch, categoryGetID } from '../Controllers/categorysControllers.js'
-import tokenLogin from '../middlewares/Login.js'
+import express from 'express';
+const categorys = express.Router();
+import { categoryGet, categoryPost, categoryDelete, categoryPatch, categoryGetID } from '../Controllers/categorysControllers.js';
+import tokenLogin from '../middlewares/Login.js';
 
 categorys
     .get('/categorysGet', categoryGet)
@@ -10,4 +10,4 @@ categorys
     .delete('/categorysDelete/:id', tokenLogin, categoryDelete)
     .patch('/categoryPatch/:id', tokenLogin, categoryPatch)
 
-export default categorys
+export default categorys;
