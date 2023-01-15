@@ -57,7 +57,7 @@ export const categoryDelete = async (req, res) => {
             if (err) return res.status(400).json(err);
             return res.status(200).json({
                 sucess: data,
-                msg: "Categoria foi deletada com sucesso"
+                msg: "A Categoria foi deletada com sucesso"
             });
         });
     } catch (err) {
